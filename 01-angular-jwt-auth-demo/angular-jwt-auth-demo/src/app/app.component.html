@@ -1,1 +1,28 @@
-<app-auth></app-auth>
+<div class="flex flex-col items-center min-h-screen bg-gray-50 py-8">
+  <div class="mb-8 max-w-2xl w-full ">
+    <div class="bg-white shadow rounded p-6 mb-6">
+      <h2 class="text-xl font-bold mb-2">Demo Scenario</h2>
+      <ol class="list-decimal list-inside text-gray-700 space-y-1">
+        <li>When you open the page, the user list <span class="font-semibold">will not be displayed</span> if you are
+          not authenticated (no token).</li>
+        <li>Create a new user using the form below.</li>
+        <li>Log in with the user you just created.</li>
+        <li>After logging in, the user list will be displayed correctly.</li>
+      </ol>
+      <p class="mt-4 text-sm text-gray-500">Tip: The token is saved in localStorage after login.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 flex flex-col gap-6"></div>
+    <div class="bg-white shadow rounded p-4 my-4">
+      <h3 class="font-semibold mb-2">Create User</h3>
+      <app-user-form></app-user-form>
+    </div>
+    <div class="bg-white shadow rounded p-4 my-4">
+      <h3 class="font-semibold mb-2">Login</h3>
+      <app-auth (loggedIn)="onLoggedIn($event)"></app-auth>
+    </div>
+    <div class="bg-white shadow rounded p-4">
+      <h3 class="font-semibold mb-2">User List</h3>
+      <app-user-list></app-user-list>
+    </div>
+  </div>
+</div>

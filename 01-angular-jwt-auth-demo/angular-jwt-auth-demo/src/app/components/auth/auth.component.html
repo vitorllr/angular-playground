@@ -1,16 +1,19 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="p-fluid" autocomplete="off">
-  <p-inputGroup>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-4" autocomplete="off">
+
+  <p-inputGroup class="w-full border rounded mt-8">
     <p-inputGroupAddon>
-      <i class="pi pi-user"></i>
+      <i class="pi pi-user text-blue-500"></i>
     </p-inputGroupAddon>
-    <input pInputText placeholder="Username" />
+    <input pInputText placeholder="Username" formControlName="username" class="w-full px-2 py-2 " />
   </p-inputGroup>
 
-  <p-inputGroup>
+  <p-inputGroup class="w-full border rounded">
     <p-inputGroupAddon>
-      <i class="pi pi-lock"></i>
+      <i class="pi pi-lock text-blue-500"></i>
     </p-inputGroupAddon>
-    <input pPassword formControlName="password" placeholder="Password" />
+    <input pPassword formControlName="password" placeholder="Password" class="w-full px-2 py-2" />
   </p-inputGroup>
-  <button pButton type="submit" label="Sign In" [disabled]="loginForm.invalid"></button>
+
+  <button pButton type="submit" label="Sign In" [disabled]="loginForm.invalid"
+    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded transition"></button>
 </form>

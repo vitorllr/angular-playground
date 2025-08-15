@@ -1,0 +1,16 @@
+<p-table *ngIf="!loading && !error" [value]="users" [paginator]="true" [rows]="10" responsiveLayout="scroll">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Email</th>
+      <th>Username</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-user>
+    <tr>
+      <td>{{ user.email }}</td>
+      <td>{{ user.username }}</td>
+    </tr>
+  </ng-template>
+</p-table>
+<div *ngIf="loading" class="text-center py-4">Loading Users...</div>
+<div *ngIf="error" class="text-red-600 text-center py-4">{{ error }}</div>
