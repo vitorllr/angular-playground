@@ -1,0 +1,16 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="p-fluid" autocomplete="off">
+  <p-inputGroup>
+    <p-inputGroupAddon>
+      <i class="pi pi-user"></i>
+    </p-inputGroupAddon>
+    <input pInputText placeholder="Username" />
+  </p-inputGroup>
+
+  <p-inputGroup>
+    <p-inputGroupAddon>
+      <i class="pi pi-lock"></i>
+    </p-inputGroupAddon>
+    <input pPassword formControlName="password" placeholder="Password" />
+  </p-inputGroup>
+  <button pButton type="submit" label="Sign In" [disabled]="loginForm.invalid"></button>
+</form>
