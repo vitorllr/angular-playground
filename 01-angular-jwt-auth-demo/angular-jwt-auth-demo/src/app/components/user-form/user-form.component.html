@@ -1,15 +1,31 @@
-<form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="space-y-4">
-  <div>
-    <label for="email" class="block mb-1">Email</label>
-    <input id="email" type="email" formControlName="email" class="w-full p-2 border rounded" />
-  </div>
-  <div>
-    <label for="username" class="block mb-1">Username</label>
-    <input id="username" type="text" formControlName="username" class="w-full p-2 border rounded" />
-  </div>
-  <div>
-    <label for="password" class="block mb-1">Password</label>
-    <input id="password" type="password" formControlName="password" class="w-full p-2 border rounded" />
-  </div>
-  <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded">Criar usuário</button>
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="space-y-4" autocomplete="off">
+  <p-inputGroup class="w-full border rounded mt-8">
+    <p-inputGroupAddon>
+      <i class="pi pi-envelope text-blue-500"></i>
+    </p-inputGroupAddon>
+    <input pInputText placeholder="Email" formControlName="email" class="w-full px-2 py-2" />
+  </p-inputGroup>
+
+  <p-inputGroup class="w-full border rounded">
+    <p-inputGroupAddon>
+      <i class="pi pi-user text-blue-500"></i>
+    </p-inputGroupAddon>
+    <input pInputText placeholder="Username" formControlName="username" class="w-full px-2 py-2" />
+  </p-inputGroup>
+
+  <p-inputGroup class="w-full border rounded">
+    <p-inputGroupAddon>
+      <i class="pi pi-lock text-blue-500"></i>
+    </p-inputGroupAddon>
+
+    <input [type]="showPassword ? 'text' : 'password'" pInputText formControlName="password" placeholder="Password"
+      class="w-full px-2 py-2 border-0 focus:ring-0 focus:outline-none bg-transparent" />
+
+    <p-inputGroupAddon (click)="showPassword = !showPassword" pstyle="cursor: pointer">
+      <i class="pi" [ngClass]="showPassword ? 'pi-eye-slash' : 'pi-eye'"></i>
+    </p-inputGroupAddon>
+  </p-inputGroup>
+
+  <button pButton type="submit" label="Create User" [disabled]="userForm.invalid"
+    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded transition"></button>
 </form>

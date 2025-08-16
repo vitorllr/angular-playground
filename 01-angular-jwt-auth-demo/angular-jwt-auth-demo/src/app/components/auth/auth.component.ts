@@ -6,21 +6,27 @@ import { ButtonModule } from 'primeng/button';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { AuthService } from './auth.service';
+import { CommonModule } from '@angular/common';
+import { MessageService } from 'primeng/api';
+
 
 @Component({
   selector: 'app-auth',
   standalone: true,
-  imports: [ReactiveFormsModule, InputTextModule, PasswordModule, ButtonModule, InputGroupModule, InputGroupAddonModule],
+  imports: [ReactiveFormsModule, InputTextModule, PasswordModule,
+    ButtonModule, InputGroupModule, InputGroupAddonModule, CommonModule, ],
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit {
   loginForm!: FormGroup;
   @Output() loggedIn = new EventEmitter<boolean>();
+  showPassword = false;
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -36,15 +42,13 @@ export class AuthComponent implements OnInit {
 
   onSubmit(): void {
     console.log(this.loginForm.value);
-    this.authService.callLoginApi(this.loginForm.value).subscribe({
+    this.authService.login(this.loginForm.value).subscribe({
       next: (response: any) => {
-        console.log('Login successful:', response);
-        this.authService.saveToken(response?.token);
-        this.loggedIn.emit(true);
+        this.messageService.add({ severity: 'success', summary: 'Login successful', detail: 'Welcome back!' });
       },
       error: (error) => {
         console.error('Error logging in:', error);
-        this.loggedIn.emit(false);
+        this.messageService.add({ severity: 'error', summary: 'Login failed', detail: 'Invalid credentials' });
       }
     });
   }

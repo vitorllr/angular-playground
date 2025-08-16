@@ -1,27 +1,35 @@
-# AngularJwtAuthDemo
+# Angular JWT Auth Demo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.4.
+This project is a demonstration application of JWT authentication using Angular on the frontend and a separate backend API.
 
-## Development server
+## About the Project
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+The goal of this project is to show how to implement JSON Web Token (JWT) authentication in an Angular application, including:
+- User login
+- Route protection
+- HTTP request interception to send the JWT token
+- Example of consuming a protected API
 
-## Code scaffolding
+## Project Structure
+- **Frontend:** Angular (this folder)
+- **Backend/API:** Located in `../api/loginjwt` (outside this folder)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## How to Start the Project
 
-## Build
+### 1. Start the API (Backend)
+Navigate to the API folder and start the backend server. Example:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+cd ../api/loginjwt
+```
+# Build and run the Spring Boot API
+```bash
+./mvnw spring-boot:run
+```
+### 2. Start the Frontend (Angular)
+Open a new terminal window or tab, go to the frontend folder, and run:
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+cd ../angular-jwt-auth-demo
+npm install
+ng serve

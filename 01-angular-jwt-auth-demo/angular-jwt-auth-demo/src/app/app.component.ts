@@ -15,11 +15,4 @@ import { ViewChild } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-jwt-auth-demo';
-  @ViewChild(UserListComponent) userListComponent?: UserListComponent;
-
-  onLoggedIn(logged: boolean) {
-    if (logged && this.userListComponent) {
-      this.userListComponent.ngOnInit();
-    }
-  }
 }
